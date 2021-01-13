@@ -1,0 +1,10 @@
+version: "3"
+
+services:
+  dockernodejs:
+    build: .
+    command: npm start
+    ports:
+      - "3333:3000"
+    volumes:
+      - .:/usr/app
