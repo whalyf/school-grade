@@ -7,4 +7,4 @@ O banco de dados foi construido utilizando PostgresSQL, o backup se encontra na 
 CPF's cadastrados para teste 999.999.999-99, 888.888.888-88. 
 (Obs.: Outra possibilidade seria utilizar o número de matrícula do aluno em vez do CPF).
 
-O backup do banco "school" se encontra no diretório /src/database, lá também será possível encontrar os Txt's referentes a criação das tables
+O backup do banco "school" se encontra no diretório backend/src/database, lá também será possível encontrar os Txt's referentes a criação das tables
