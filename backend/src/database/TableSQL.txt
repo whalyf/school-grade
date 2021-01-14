@@ -1,0 +1,89 @@
+-- Table: public.CLASSES
+
+-- DROP TABLE public."CLASSES";
+
+CREATE TABLE public."CLASSES"
+(
+    "ID" integer NOT NULL,
+    "NAME" character varying COLLATE pg_catalog."default" NOT NULL,
+    CONSTRAINT "CLASS_pkey" PRIMARY KEY ("ID")
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE public."CLASSES"
+    OWNER to postgres;
+
+
+*********************************************************************
+-- Table: public.GRADE
+
+-- DROP TABLE public."GRADE";
+
+CREATE TABLE public."GRADE"
+(
+    "ID" integer NOT NULL,
+    "CLASS" integer,
+    "STUDENTCPF" character varying COLLATE pg_catalog."default",
+    "HOUR" time without time zone,
+    "TEACHERID" integer,
+    CONSTRAINT "CLASSES_pkey" PRIMARY KEY ("ID"),
+    CONSTRAINT "CLASS_fkey" FOREIGN KEY ("CLASS")
+        REFERENCES public."CLASSES" ("ID") MATCH SIMPLE
+        ON UPDATE CASCADE
+        ON DELETE CASCADE,
+    CONSTRAINT "STUDENTCPF_fkey" FOREIGN KEY ("STUDENTCPF")
+        REFERENCES public."STUDENTS" ("CPF") MATCH SIMPLE
+        ON UPDATE CASCADE
+        ON DELETE CASCADE,
+    CONSTRAINT "TEACHERID_fkey" FOREIGN KEY ("TEACHERID")
+        REFERENCES public."TEACHERS" ("ID") MATCH SIMPLE
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE public."GRADE"
+    OWNER to postgres;
+
+
+*********************************************************************
+-- Table: public.STUDENTS
+
+-- DROP TABLE public."STUDENTS";
+
+CREATE TABLE public."STUDENTS"
+(
+    "CPF" character varying(11) COLLATE pg_catalog."default" NOT NULL,
+    "NAME" character varying COLLATE pg_catalog."default" NOT NULL,
+    "CLASS" integer NOT NULL,
+    CONSTRAINT "STUDENTS_pkey" PRIMARY KEY ("CPF"),
+    CONSTRAINT "CLASS_fkey" FOREIGN KEY ("CLASS")
+        REFERENCES public."CLASSES" ("ID") MATCH SIMPLE
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE public."STUDENTS"
+    OWNER to postgres;
+
+*********************************************************************
+-- Table: public.TEACHERS
+
+-- DROP TABLE public."TEACHERS";
+
+CREATE TABLE public."TEACHERS"
+(
+    "ID" integer NOT NULL,
+    "NAME" character varying COLLATE pg_catalog."default" NOT NULL,
+    "SUBJECT" character varying COLLATE pg_catalog."default" NOT NULL,
+    CONSTRAINT "TEACHERS_pkey" PRIMARY KEY ("ID")
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE public."TEACHERS"
+    OWNER to postgres;
