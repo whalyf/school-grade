@@ -1,5 +1,5 @@
 <h1>School Grade</h1>
-<h3>7It's an Angular app to filter students grades based in their CPF.</h3>
+<h3>It's an Angular app to filter students grades based in their CPF.</h3>
 
 ********************************************************************************************************************************************************************
 (pt-br)
